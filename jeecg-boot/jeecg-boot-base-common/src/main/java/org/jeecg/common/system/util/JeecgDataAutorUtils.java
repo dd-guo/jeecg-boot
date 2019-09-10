@@ -62,13 +62,14 @@ public class JeecgDataAutorUtils {
 	 * @param request
 	 * @return
 	 */
+	@SuppressWarnings("AlibabaLowerCamelCaseVariableNaming")
 	public static synchronized String loadDataSearchConditonSQLString() {
 		return (String) SpringContextUtils.getHttpServletRequest().getAttribute(MENU_DATA_AUTHOR_RULE_SQL);
 	}
 
 	/**
 	 * 往链接请求里面，传入数据查询条件
-	 * 
+	 *
 	 * @param request
 	 * @param MENU_DATA_AUTHOR_RULE_SQL
 	 */
@@ -78,7 +79,7 @@ public class JeecgDataAutorUtils {
 			request.setAttribute(MENU_DATA_AUTHOR_RULE_SQL,sql);
 		}
 	}
-	
+
 	public static synchronized void installUserInfo(HttpServletRequest request, SysUserCacheInfo userinfo) {
 		request.setAttribute(SYS_USER_INFO, userinfo);
 	}

@@ -11,7 +11,7 @@ import com.alibaba.fastjson.JSONObject;
 /**
  * 验证通用属性
  */
-public abstract class CommonProperty implements Serializable{
+public abstract class AbstractProperty implements Serializable{
 
 	private static final long serialVersionUID = -426159949502493187L;
 

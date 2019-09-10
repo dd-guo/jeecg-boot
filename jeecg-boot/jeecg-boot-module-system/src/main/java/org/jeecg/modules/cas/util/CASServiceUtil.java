@@ -31,7 +31,8 @@ public class CASServiceUtil {
 	/**
      * 验证ST
      */
-    public static String getSTValidate(String url,String st, String service){
+    @SuppressWarnings("AlibabaLowerCamelCaseVariableNaming")
+    public static String getSTValidate(String url, String st, String service){
 		try {
 			url = url+"?service="+service+"&ticket="+st;
 			CloseableHttpClient httpclient = createHttpClientWithNoSsl();

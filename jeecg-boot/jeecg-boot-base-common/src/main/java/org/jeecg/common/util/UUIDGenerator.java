@@ -53,6 +53,7 @@ public class UUIDGenerator {
 		return buf.toString();
 	}
 
+	@SuppressWarnings("AlibabaLowerCamelCaseVariableNaming")
 	private final static int getJVM() {
 		return JVM;
 	}
@@ -69,6 +70,7 @@ public class UUIDGenerator {
 	/**
 	 * Unique in a local network
 	 */
+	@SuppressWarnings("AlibabaLowerCamelCaseVariableNaming")
 	private final static int getIP() {
 		return IP;
 	}

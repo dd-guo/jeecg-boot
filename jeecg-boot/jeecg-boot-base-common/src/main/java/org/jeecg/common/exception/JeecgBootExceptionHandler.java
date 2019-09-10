@@ -25,6 +25,7 @@ public class JeecgBootExceptionHandler {
 	/**
 	 * 处理自定义异常
 	 */
+	@SuppressWarnings("AlibabaLowerCamelCaseVariableNaming")
 	@ExceptionHandler(JeecgBootException.class)
 	public Result<?> handleRRException(JeecgBootException e){
 		log.error(e.getMessage(), e);
@@ -61,7 +62,7 @@ public class JeecgBootExceptionHandler {
 	 * @return
 	 */
 	@ExceptionHandler(HttpRequestMethodNotSupportedException.class)
-	public Result<?> HttpRequestMethodNotSupportedException(Exception e){
+	public Result<?> httpRequestMethodNotSupportedException(Exception e){
 		log.error(e.getMessage(), e);
 		return Result.error("没有权限，请联系管理员授权");
 	}

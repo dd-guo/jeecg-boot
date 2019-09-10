@@ -5,11 +5,11 @@ import java.util.List;
 import java.util.Map;
 
 import org.jeecg.common.system.vo.DictModel;
-import org.jeecg.common.util.jsonschema.CommonProperty;
+import org.jeecg.common.util.jsonschema.AbstractProperty;
 
 import com.alibaba.fastjson.JSONObject;
 
-public class NumberProperty extends CommonProperty {
+public class NumberProperty extends AbstractProperty {
 
 	private static final long serialVersionUID = -558615331436437200L;
 	

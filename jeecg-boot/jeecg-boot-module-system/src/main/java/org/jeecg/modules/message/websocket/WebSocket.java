@@ -2,6 +2,7 @@ package org.jeecg.modules.message.websocket;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.concurrent.CopyOnWriteArraySet;
 
 import javax.websocket.OnClose;
@@ -99,5 +100,17 @@ public class WebSocket {
     	}
         
     }
-    
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof WebSocket)) return false;
+        WebSocket webSocket = (WebSocket) o;
+        return Objects.equals(session, webSocket.session);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(session);
+    }
 }

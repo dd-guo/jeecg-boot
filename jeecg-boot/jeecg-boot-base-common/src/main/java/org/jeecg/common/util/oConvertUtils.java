@@ -49,7 +49,7 @@ public class oConvertUtils {
 	}
 	
 	public static boolean isNotEmpty(Object object) {
-		if (object != null && !object.equals("") && !object.equals("null")) {
+		if (object != null && !"".equals(object) && !"null".equals(object)) {
 			return (true);
 		}
 		return (false);
@@ -60,6 +60,7 @@ public class oConvertUtils {
 		return temp;
 	}
 
+	@SuppressWarnings("AlibabaLowerCamelCaseVariableNaming")
 	public static String StrToUTF(String strIn, String sourceCode, String targetCode) {
 		strIn = "";
 		try {
@@ -74,7 +75,7 @@ public class oConvertUtils {
 
 	private static String code2code(String strIn, String sourceCode, String targetCode) {
 		String strOut = null;
-		if (strIn == null || (strIn.trim()).equals("")) {
+		if (strIn == null || "".equals(strIn.trim())) {
 			return strIn;
 		}
 		try {
@@ -377,7 +378,7 @@ public class oConvertUtils {
 
 	/**
 	 * SET转换MAP
-	 * 
+	 *
 	 * @param str
 	 * @return
 	 */
@@ -403,7 +404,7 @@ public class oConvertUtils {
 		long bEnd = getIpNum("172.31.255.255");
 		long cBegin = getIpNum("192.168.0.0");
 		long cEnd = getIpNum("192.168.255.255");
-		isInnerIp = isInner(ipNum, aBegin, aEnd) || isInner(ipNum, bBegin, bEnd) || isInner(ipNum, cBegin, cEnd) || ipAddress.equals("127.0.0.1");
+		isInnerIp = isInner(ipNum, aBegin, aEnd) || isInner(ipNum, bBegin, bEnd) || isInner(ipNum, cBegin, cEnd) || "127.0.0.1".equals(ipAddress);
 		return isInnerIp;
 	}
 
@@ -474,7 +475,7 @@ public class oConvertUtils {
 	 * @return 转换后的驼峰式命名的字符串
 	 */
 	public static String camelNames(String names) {
-		if(names==null||names.equals("")){
+		if(names==null|| "".equals(names)){
 			return null;
 		}
 		StringBuffer sf = new StringBuffer();

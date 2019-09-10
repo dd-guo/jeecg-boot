@@ -37,6 +37,7 @@ public class SysUserDepartServiceImpl extends ServiceImpl<SysUserDepartMapper, S
 	 */
 	@Override
 	public List<DepartIdModel> queryDepartIdsOfUser(String userId) {
+		@SuppressWarnings("AlibabaLowerCamelCaseVariableNaming")
 		LambdaQueryWrapper<SysUserDepart> queryUDep = new LambdaQueryWrapper<SysUserDepart>();
 		LambdaQueryWrapper<SysDepart> queryDep = new LambdaQueryWrapper<SysDepart>();
 		try {
@@ -71,6 +72,7 @@ public class SysUserDepartServiceImpl extends ServiceImpl<SysUserDepartMapper, S
 	 */
 	@Override
 	public List<SysUser> queryUserByDepId(String depId) {
+		//noinspection AlibabaLowerCamelCaseVariableNaming
 		LambdaQueryWrapper<SysUserDepart> queryUDep = new LambdaQueryWrapper<SysUserDepart>();
 		queryUDep.eq(SysUserDepart::getDepId, depId);
 		List<String> userIdList = new ArrayList<>();

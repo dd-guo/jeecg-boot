@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
 import lombok.extern.slf4j.Slf4j;
@@ -19,9 +18,9 @@ public class JsonschemaUtil {
 	 * @param propertyList
 	 * @return
 	 */
-	public static JSONObject getJsonSchema(JsonSchemaDescrip descrip, List<CommonProperty> propertyList) {
+	public static JSONObject getJsonSchema(JsonSchemaDescrip descrip, List<AbstractProperty> propertyList) {
 		JSONObject obj = new JSONObject();
-		obj.put("$schema", descrip.get$schema());
+		obj.put("$schema", descrip.getSchema());
 		obj.put("type", descrip.getType());
 		obj.put("title", descrip.getTitle());
 
@@ -29,8 +28,8 @@ public class JsonschemaUtil {
 		obj.put("required", requiredArr);
 
 		JSONObject properties = new JSONObject();
-		for (CommonProperty commonProperty : propertyList) {
-			Map<String, Object> map = commonProperty.getPropertyJson();
+		for (AbstractProperty abstractProperty : propertyList) {
+			Map<String, Object> map = abstractProperty.getPropertyJson();
 			properties.put(map.get("key").toString(), map.get("prop"));
 		}
 		obj.put("properties", properties);
@@ -46,7 +45,7 @@ public class JsonschemaUtil {
 	 * @param propertyList 子对象属性集合
 	 * @return
 	 */
-	public static JSONObject getSubJsonSchema(String title,List<String> requiredArr,List<CommonProperty> propertyList) {
+	public static JSONObject getSubJsonSchema(String title,List<String> requiredArr,List<AbstractProperty> propertyList) {
 		JSONObject obj = new JSONObject();
 		obj.put("type", "object");
 		obj.put("view", "tab");
@@ -58,8 +57,8 @@ public class JsonschemaUtil {
 		obj.put("required", requiredArr);
 
 		JSONObject properties = new JSONObject();
-		for (CommonProperty commonProperty : propertyList) {
-			Map<String, Object> map = commonProperty.getPropertyJson();
+		for (AbstractProperty abstractProperty : propertyList) {
+			Map<String, Object> map = abstractProperty.getPropertyJson();
 			properties.put(map.get("key").toString(), map.get("prop"));
 		}
 		obj.put("properties", properties);

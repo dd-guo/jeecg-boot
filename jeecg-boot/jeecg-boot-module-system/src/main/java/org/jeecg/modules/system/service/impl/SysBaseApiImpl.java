@@ -72,10 +72,10 @@ public class SysBaseApiImpl implements ISysBaseAPI {
     private WebSocket webSocket;
 	
 	@Override
-	public void addLog(String LogContent, Integer logType, Integer operatetype) {
+	public void addLog(String logContent, Integer logType, Integer operatetype) {
 		SysLog sysLog = new SysLog();
 		//注解上的描述,操作日志内容
-		sysLog.setLogContent(LogContent);
+		sysLog.setLogContent(logContent);
 		sysLog.setLogType(logType);
 		sysLog.setOperateType(operatetype);
 

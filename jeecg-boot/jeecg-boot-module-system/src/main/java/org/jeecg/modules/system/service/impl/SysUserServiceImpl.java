@@ -48,6 +48,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
 	private SysUserRoleMapper sysUserRoleMapper;
 	@Autowired
 	private SysUserDepartMapper sysUserDepartMapper;
+	@SuppressWarnings("AlibabaLowerCamelCaseVariableNaming")
 	@Autowired
 	private ISysBaseAPI sysBaseAPI;
 	@Autowired

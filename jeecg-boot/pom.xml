@@ -281,7 +281,14 @@
 		   <groupId>org.springframework.boot</groupId>
 		   <artifactId>spring-boot-starter-websocket</artifactId>
 		</dependency>
-		
+
+		<!-- joda-time -->
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+			<version>2.10.3</version>
+		</dependency>
+
 	</dependencies>
 
 	<dependencyManagement>

@@ -62,6 +62,7 @@ public class DepartIdModel implements Serializable {
         this.children = children;
     }
 
+    @SuppressWarnings("AlibabaLowerCamelCaseVariableNaming")
     public static long getSerialVersionUID() {
         return serialVersionUID;
     }

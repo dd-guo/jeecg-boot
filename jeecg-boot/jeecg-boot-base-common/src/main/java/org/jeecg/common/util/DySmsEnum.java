@@ -2,6 +2,7 @@ package org.jeecg.common.util;
 
 import org.apache.commons.lang.StringUtils;
 
+@SuppressWarnings("AlibabaEnumConstantsMustHaveComment")
 public enum DySmsEnum {
 	
 	LOGIN_TEMPLATE_CODE("SMS_167040816","JEECG","code"),

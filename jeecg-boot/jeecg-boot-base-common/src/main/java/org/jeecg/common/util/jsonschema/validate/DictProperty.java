@@ -3,7 +3,7 @@ package org.jeecg.common.util.jsonschema.validate;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.jeecg.common.util.jsonschema.CommonProperty;
+import org.jeecg.common.util.jsonschema.AbstractProperty;
 
 import com.alibaba.fastjson.JSONObject;
 
@@ -12,7 +12,7 @@ import com.alibaba.fastjson.JSONObject;
  * @author 86729
  *
  */
-public class DictProperty extends CommonProperty {
+public class DictProperty extends AbstractProperty {
 	
 	private static final long serialVersionUID = 3786503639885610767L;
 	

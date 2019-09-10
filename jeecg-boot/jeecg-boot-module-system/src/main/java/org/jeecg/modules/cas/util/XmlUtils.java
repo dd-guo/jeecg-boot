@@ -217,6 +217,7 @@ public final class XmlUtils {
             this.attributes = new HashMap<String, Object>();
         }
 
+        @SuppressWarnings("AlibabaLowerCamelCaseVariableNaming")
         @Override
         public void startElement(final String namespaceURI, final String localName, final String qName,
                 final Attributes attributes) throws SAXException {
@@ -235,6 +236,7 @@ public final class XmlUtils {
             }
         }
 
+        @SuppressWarnings("AlibabaLowerCamelCaseVariableNaming")
         @Override
         public void endElement(final String namespaceURI, final String localName, final String qName)
                 throws SAXException {

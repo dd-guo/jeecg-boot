@@ -19,6 +19,7 @@ import org.apache.commons.beanutils.PropertyUtils;
 import org.jeecg.common.constant.CommonConstant;
 import org.jeecg.common.system.util.JeecgDataAutorUtils;
 import org.jeecg.common.system.util.JwtUtil;
+import org.jeecg.common.util.DateUtils;
 import org.jeecg.common.util.SqlInjectionUtil;
 import org.jeecg.common.util.oConvertUtils;
 import org.jeecg.modules.system.entity.SysPermissionDataRule;
@@ -49,17 +50,6 @@ public class QueryGenerator {
 	/**排序方式*/
 	private static final String ORDER_TYPE = "order";
 	private static final String ORDER_TYPE_ASC = "ASC";
-	
-	/**时间格式化 */
-	private static final ThreadLocal<SimpleDateFormat> local = new ThreadLocal<SimpleDateFormat>();
-	private static SimpleDateFormat getTime(){
-		SimpleDateFormat time = local.get();
-		if(time == null){
-			time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-			local.set(time);
-		}
-		return time;
-	}
 	
 	/**
 	 * 获取查询条件构造器QueryWrapper实例 通用查询条件已被封装完成
@@ -359,15 +349,15 @@ public class QueryGenerator {
 		if(value.length()==10) {
 			if(rule==QueryRuleEnum.GE) {
 				//比较大于
-				date = getTime().parse(value + " 00:00:00");
+				date = DateUtils.toStandardDate(value + " 00:00:00");
 			}else if(rule==QueryRuleEnum.LE) {
 				//比较小于
-				date = getTime().parse(value + " 23:59:59");
+				date = DateUtils.toStandardDate(value + " 23:59:59");
 			}
 			//TODO 日期类型比较特殊 可能oracle下不一定好使
 		}
 		if(date==null) {
-			date = getTime().parse(value);
+			date = DateUtils.toStandardDate(value);
 		}
 		return date;
 	}

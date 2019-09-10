@@ -1,15 +1,21 @@
 package org.jeecg.common.util;
 
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
+
+import java.util.Arrays;
+import java.util.regex.Pattern;
 
 /**
  * sql注入处理工具类
  * 
  * @author zhoujf
+ * @author dd.guo@foxmail.com
  */
 @Slf4j
 public class SqlInjectionUtil {
-	final static String xssStr = "'|and |exec |insert |select |delete |update |drop |count |chr |mid |master |truncate |char |declare |;|or |+|,";
+	final static Pattern XSS_PATTERN = Pattern.compile("'|and |exec |insert |select |delete |update |drop |count |chr |mid |master |truncate |char |declare |;|or |\\+|,");
+	private static final Pattern SPECIAL_XSS_PATTERN =  Pattern.compile("exec |insert |delete |update |drop |chr |mid |master |truncate |char |declare ");
 
 	/**
 	 * sql注入过滤处理，遇到注入关键字抛异常
@@ -18,41 +24,22 @@ public class SqlInjectionUtil {
 	 * @return
 	 */
 	public static void filterContent(String value) {
-		if (value == null || "".equals(value)) {
+		if (StringUtils.isEmpty(value)){
 			return;
 		}
-		value = value.toLowerCase();// 统一转为小写
-		String[] xssArr = xssStr.split("\\|");
-		for (int i = 0; i < xssArr.length; i++) {
-			if (value.indexOf(xssArr[i]) > -1) {
-				log.error("请注意，值可能存在SQL注入风险!---> {}", value);
-				throw new RuntimeException("请注意，值可能存在SQL注入风险!--->" + value);
-			}
+		if (XSS_PATTERN.matcher(value.toLowerCase()).matches()){
+			log.error("请注意，值可能存在SQL注入风险!---> {}", value);
+			throw new RuntimeException("请注意，值可能存在SQL注入风险!--->" + value);
 		}
-		return;
 	}
 
 	/**
 	 * sql注入过滤处理，遇到注入关键字抛异常
 	 * 
-	 * @param value
 	 * @return
 	 */
 	public static void filterContent(String[] values) {
-		String[] xssArr = xssStr.split("\\|");
-		for (String value : values) {
-			if (value == null || "".equals(value)) {
-				return;
-			}
-			value = value.toLowerCase();// 统一转为小写
-			for (int i = 0; i < xssArr.length; i++) {
-				if (value.indexOf(xssArr[i]) > -1) {
-					log.error("请注意，值可能存在SQL注入风险!---> {}", value);
-					throw new RuntimeException("请注意，值可能存在SQL注入风险!--->" + value);
-				}
-			}
-		}
-		return;
+		Arrays.asList(values).parallelStream().forEach(SqlInjectionUtil::specialFilterContent);
 	}
 
 	/**
@@ -60,44 +47,13 @@ public class SqlInjectionUtil {
 	 * @param value
 	 * @return
 	 */
-	@Deprecated
 	public static void specialFilterContent(String value) {
-		String specialXssStr = "exec |insert |select |delete |update |drop |count |chr |mid |master |truncate |char |declare |;|+|";
-		String[] xssArr = specialXssStr.split("\\|");
-		if (value == null || "".equals(value)) {
+		if (StringUtils.isEmpty(value)){
 			return;
 		}
-		value = value.toLowerCase();// 统一转为小写
-		for (int i = 0; i < xssArr.length; i++) {
-			if (value.indexOf(xssArr[i]) > -1) {
-				log.error("请注意，值可能存在SQL注入风险!---> {}", value);
-				throw new RuntimeException("请注意，值可能存在SQL注入风险!--->" + value);
-			}
+		if (SPECIAL_XSS_PATTERN.matcher(value.toLowerCase()).matches()){
+			log.error("请注意，值可能存在SQL注入风险!---> {}", value);
+			throw new RuntimeException("请注意，值可能存在SQL注入风险!--->" + value);
 		}
-		return;
 	}
-	
-	
-	/**
-	 * @特殊方法(不通用) 仅用于Online报表SQL解析，注入过滤
-	 * @param value
-	 * @return
-	 */
-	@Deprecated
-	public static void specialFilterContentForOnlineReport(String value) {
-		String specialXssStr = "exec |insert |delete |update |drop |chr |mid |master |truncate |char |declare |";
-		String[] xssArr = specialXssStr.split("\\|");
-		if (value == null || "".equals(value)) {
-			return;
-		}
-		value = value.toLowerCase();// 统一转为小写
-		for (int i = 0; i < xssArr.length; i++) {
-			if (value.indexOf(xssArr[i]) > -1) {
-				log.error("请注意，值可能存在SQL注入风险!---> {}", value);
-				throw new RuntimeException("请注意，值可能存在SQL注入风险!--->" + value);
-			}
-		}
-		return;
-	}
-
 }

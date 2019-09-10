@@ -1,14 +1,13 @@
 package org.jeecg.common.util.jsonschema.validate;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-import org.jeecg.common.util.jsonschema.CommonProperty;
+import org.jeecg.common.util.jsonschema.AbstractProperty;
 
 import com.alibaba.fastjson.JSONObject;
 
-public class PopupProperty extends CommonProperty {
+public class PopupProperty extends AbstractProperty {
 	
 	private static final long serialVersionUID = -3200493311633999539L;
 	

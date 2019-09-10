@@ -54,7 +54,7 @@ public class SendMsgJob implements Job {
 			}
 			Integer sendNum = sysMessage.getEsSendNum();
 			try {
-				sendMsgHandle.SendMsg(sysMessage.getEsReceiver(), sysMessage.getEsTitle(),
+				sendMsgHandle.sendMsg(sysMessage.getEsReceiver(), sysMessage.getEsTitle(),
 						sysMessage.getEsContent().toString());
 				// 发送消息成功
 				sysMessage.setEsSendStatus(SendMsgStatusEnum.SUCCESS.getCode());
