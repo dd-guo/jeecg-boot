@@ -26,9 +26,15 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * 
  * @Author  张代浩
+ * @Author  dd.guo
+ * update:
+ * 		pre compile blank pattern
  *
  */
 public class oConvertUtils {
+
+	private static Pattern BLANK_PATTERN = Pattern.compile("\\s*|\t|\r|\n");
+
 	public static boolean isEmpty(Object object) {
 		if (object == null) {
 			return (true);
@@ -335,8 +341,7 @@ public class oConvertUtils {
 	public static String replaceBlank(String str) {
 		String dest = "";
 		if (str != null) {
-			Pattern p = Pattern.compile("\\s*|\t|\r|\n");
-			Matcher m = p.matcher(str);
+			Matcher m = BLANK_PATTERN.matcher(str);
 			dest = m.replaceAll("");
 		}
 		return dest;
