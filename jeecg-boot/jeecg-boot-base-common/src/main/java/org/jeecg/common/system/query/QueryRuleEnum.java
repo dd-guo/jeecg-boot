@@ -7,6 +7,7 @@ import org.jeecg.common.util.oConvertUtils;
  * @Author Scott
  * @Date 2019年02月14日
  */
+@SuppressWarnings("AlibabaEnumConstantsMustHaveComment")
 public enum QueryRuleEnum {
 
     GT(">","gt","大于"),

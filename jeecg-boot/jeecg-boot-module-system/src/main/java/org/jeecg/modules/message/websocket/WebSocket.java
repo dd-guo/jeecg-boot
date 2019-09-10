@@ -103,8 +103,12 @@ public class WebSocket {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof WebSocket)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof WebSocket)) {
+            return false;
+        }
         WebSocket webSocket = (WebSocket) o;
         return Objects.equals(session, webSocket.session);
     }

@@ -83,7 +83,7 @@ public class QueryGenerator {
 		*/
 		
 		//区间条件组装 模糊查询 高级查询组装 简单排序 权限查询
-		PropertyDescriptor origDescriptors[] = PropertyUtils.getPropertyDescriptors(searchObj);
+		PropertyDescriptor[] origDescriptors = PropertyUtils.getPropertyDescriptors(searchObj);
 		Map<String,SysPermissionDataRule> ruleMap = getRuleMap();
 		
 		//权限规则自定义SQL表达式
@@ -584,7 +584,7 @@ public class QueryGenerator {
 	
 	private static String getInConditionValue(Object value,boolean isString) {
 		if(isString) {
-			String temp[] = value.toString().split(",");
+			String[] temp = value.toString().split(",");
 			String res="";
 			for (String string : temp) {
 				res+=",'"+string+"'";

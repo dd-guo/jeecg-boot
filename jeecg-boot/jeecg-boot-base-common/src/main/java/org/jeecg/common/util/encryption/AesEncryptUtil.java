@@ -104,7 +104,7 @@ public class AesEncryptUtil {
     /**
      * 测试
      */
-    public static void main(String args[]) throws Exception {
+    public static void main(String[] args) throws Exception {
 
         String test1 = "sa";
         String test =new String(test1.getBytes(),"UTF-8");

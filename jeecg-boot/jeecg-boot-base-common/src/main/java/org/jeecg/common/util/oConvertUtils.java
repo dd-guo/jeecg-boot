@@ -446,7 +446,7 @@ public class oConvertUtils {
 			//update-end--Author:zhoujf  Date:20180503 for：TASK #2500 【代码生成器】代码生成器开发一通用模板生成功能
 		}
 		// 用下划线将原始字符串分割
-		String camels[] = name.split("_");
+		String[] camels = name.split("_");
 		for (String camel : camels) {
 			// 跳过原始字符串中开头、结尾的下换线或双重下划线
 			if (camel.isEmpty()) {
