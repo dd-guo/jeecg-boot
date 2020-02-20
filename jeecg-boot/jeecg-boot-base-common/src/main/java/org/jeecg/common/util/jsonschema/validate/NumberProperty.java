@@ -25,7 +25,7 @@ public class NumberProperty extends AbstractProperty {
 	 * “maximum”的值必须是一个数字，表示数字实例的包含上限。
 	 *	如果实例是数字，则仅当实例小于或等于“最大”时，此关键字才会生效。
 	 */
-	private Integer maxinum;
+	private Integer maximum;
 	
 	/**
 	 * 小于
@@ -54,12 +54,12 @@ public class NumberProperty extends AbstractProperty {
 		this.multipleOf = multipleOf;
 	}
 
-	public Integer getMaxinum() {
-		return maxinum;
+	public Integer getMaximum() {
+		return maximum;
 	}
 
-	public void setMaxinum(Integer maxinum) {
-		this.maxinum = maxinum;
+	public void setMaximum(Integer maximum) {
+		this.maximum = maximum;
 	}
 
 	public Integer getExclusiveMaximum() {
@@ -132,8 +132,8 @@ public class NumberProperty extends AbstractProperty {
 		if(multipleOf!=null) {
 			prop.put("multipleOf",multipleOf);
 		}
-		if(maxinum!=null) {
-			prop.put("maxinum",maxinum);
+		if(maximum !=null) {
+			prop.put("maxinum", maximum);
 		}
 		if(exclusiveMaximum!=null) {
 			prop.put("exclusiveMaximum",exclusiveMaximum);
